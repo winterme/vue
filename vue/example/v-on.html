@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js" ></script>
+    <title>v-text-html</title>
+</head>
+<body>
+    <h1>v-on</h1>
+    <h1>onclick,onmouseover...</h1>
+    <hr>
+    <div id="app" >
+        <p>status:{{msg}}</p>
+        <div 
+            v-on:mouseover="over" 
+            @mouseout="out"
+            style="width:300px;height:300px;border:1px solid #f00;" ></div>
+        <input type="text" @keydown.enter="keydown" name="" id="inp" />
+    </div>
+
+    <script>
+        
+        var app = new Vue({
+            el:'#app',
+            data:{
+                msg:"初始化"
+            },
+            methods:{
+                over:function(){
+                    this.msg = "鼠标进来了"
+                },
+                out:function(){
+                    this.msg = "鼠标出去了";
+                },
+                keydown:function(){
+                    this.msg = document.getElementById("inp").value;
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

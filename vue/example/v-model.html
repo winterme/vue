@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>v-model</title>
+</head>
+<body>
+    <h1>v-model 双向数据绑定 </h1>
+    <hr>
+    <div id="app" >
+        <h2>文本框数据双向绑定</h2>
+        <p>您输入的信息是：{{message}}</p>
+        <input type="text" v-model="message" />
+        <hr>
+        <hr>
+        <ul>
+            <li>.lazy：取代 imput 监听 change 事件。</li>
+            <li>.number：输入字符串转为数字。</li>
+            <li>.trim：输入去掉首尾空格。</li>
+        </ul>
+        <hr>
+        <h2>v-model绑定文本框</h2>
+        <textarea name="" id="" v-model.lazy="area" cols="30" rows="10"></textarea>
+        <p>您输入的信息是：{{area}}</p>
+        <h2>v-model绑定多选框选定一个值</h2>
+        <input type="checkbox" name="" v-model="isMan" id="isTrue">
+        <label for="isTrue">男</label>
+        <p>您选择的信息是：{{isMan}}</p>
+
+        <h2>v-model绑定多选框选定多个值</h2>
+        <input type="checkbox" name=""  v-model="names" value="张三" id="zhangsan">
+        <label for="zhangsan">张三</label>
+        <input type="checkbox" name=""  v-model="names" value="李四" id="lisi">
+        <label for="lisi">李四</label>
+        <input type="checkbox" name=""  v-model="names" value="王五" id="wangwu">
+        <label for="wangwu">王五</label>
+        <p>您选择的信息是：{{names}}</p>
+        
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:"",
+                area:"",
+                isMan:true,
+                names:[]
+            }
+        })
+    </script>
+</body>
+</html>

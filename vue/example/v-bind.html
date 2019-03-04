@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>v-bind</title>
+</head>
+<body>
+    <h1>v-bind</h1>
+    <p>v-bind 简写就是 :bind</p>
+    <hr>
+    <div id="app" >
+        <h2>绑定src</h2>
+        <img v-bind:src="imgSrc" alt="">
+        <hr>
+        <h2>v-bind缩写</h2>
+        <a :href="href">绑定href</a><br>
+        <a v-bind:href="href">绑定href</a><br>
+        <hr>
+        <h2>绑定css样式</h2>
+        <p>直接绑定css</p>
+        <div :class="classA" >直接绑定</div>
+        <hr>
+        <p>判断绑定  :class="{classA:isOk}"</p>
+        <div :class="{classA:isOk}" >直接绑定</div>
+        <hr>
+        <p>判断多个class  :class="[classA,classB]"</p>
+        <div :class="[classA,classB]" >直接绑定</div>
+        <hr>
+        <p>绑定 style</p>
+        <div :style="objectStyle" >直接绑定</div>
+        <hr>
+    </div>
+    <style>
+    .classA{
+        color: #f00;
+        font-size: 20px;
+        margin: 10px;
+        border: 1px solid #000;
+    }
+    .classB{
+        border-radius: 20px;
+        padding: 20px;
+        background: #f0f;
+    }
+    </style>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                imgSrc:"https://jspang.com/static//myimg/blogtouxiang.jpg",
+                href:"http://chenparty.com",
+                classA:"classA",
+                classB:"classB",
+                isOk:true,
+                objectStyle:{
+                    fontSize:"20px;",
+                    color:"#00f",
+                    background:"#000"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

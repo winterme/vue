@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js" ></script>
+    <title>v-text-html</title>
+</head>
+<body>
+    <h1>v-text-html</h1>
+    <h1>据说 html要少用，因为可能会引起 xss 攻击</h1>
+    <hr>
+    <div id="app" >
+        <p v-text="message" ></p>
+        <div v-html="dom" ></div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:"{{xxx}},这种情况是有弊端的，就是当我们网速很慢或者javascript出错时，会暴露我们的{{xxx}}。",
+                dom:"<h1>v-html 可以输出 html。v-text是读不出来的。</h1>"
+            }
+        })
+    </script>
+
+</body>
+</html>

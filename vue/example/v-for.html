@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js" ></script>
+    <title>v-ifelse-show</title>
+</head>
+<body>
+    <h1>v-for</h1>
+    <h1>输出序号 v-for 里面这样写: (stu,index) in sortStudets</h1>
+    <hr>
+    <div id="app" >
+        <ul>
+            <li v-for="item in sortItems" >
+                {{item}}
+            </li>
+        </ul>
+        <ol>
+            <!-- 输出 序号 -->
+            <li v-for="(stu,index) in sortStudets" >
+                <span>序号：{{index+1}}。</span><span>name:{{stu.name}}</span>&nbsp;&nbsp;<span>age:{{stu.age}}</span>&nbsp;&nbsp;<span>desc:{{stu.desc}}</span>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                items:[3,2,14,56,64,35,73,23],
+                students:[
+                    {
+                        "name":"张子强",
+                        "age":"21",
+                        "desc":"chenparty.com"
+                    },
+                    {
+                        "name":"小梦梦",
+                        "age":"20",
+                        "desc":"mm"
+                    },
+                    {
+                        "name":"鲸鱼锅",
+                        "age":"22",
+                        "desc":"十年的兄弟"
+                    }
+                ]
+            },
+            // 排序
+            computed:{
+                sortItems : function(){
+                    return this.items.sort(function(a,b){
+                        return a-b;
+                    })
+                },
+                sortStudets : function(){
+                    return this.students.sort(function(a,b){
+                        return a.age - b.age;
+                    });
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>v-pre & v-cloak & v-once</title>
+</head>
+<body>
+    <h1>v-pre & v-cloak & v-once</h1>
+    <hr>
+    <div id="app" >
+        <h1>pre原样输出，不渲染</h1>
+        <p>渲染输出：{{message}}</p>
+        <p v-pre >加了 v-pre 之后原样输出：{{message}}</p>
+        <hr>
+        <h1>v-cloak在vue渲染完指定的整个DOM后才进行显示。它必须和CSS样式一起使用，</h1>
+        <pre>
+            [v-cloak] {
+                display: none;
+              }
+
+              <div v-cloak>
+                {{ message }}
+              </div>
+        </pre>
+        <hr>
+        <h1>v-once指令,在第一次DOM时进行渲染，渲染完成后视为静态内容，跳出以后的渲染过程。</h1>
+        <p v-once >{{message}}</p>
+        <input type="text" v-model="message" >
+        <p>{{message}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好'
+            }
+        })
+    </script>
+</body>
+</html>
