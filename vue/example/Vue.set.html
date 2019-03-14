@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>Vue.set</title>
+</head>
+<body>
+    <h1>Vue.set</h1>
+    <hr>
+    <div id="app" >
+        <p>Vue.set 和 app.data 赋值的区别，操作 数组的时候，app.data 不会双向绑定修改，而 vue.set会，例子如下</p>
+        <p> <span>{{count}}</span></p>
+        <button onclick="add1()" >Vue.set</button>
+        <button onclick="add2()" >Vue.data</button>
+        <hr>
+        <p>下面演示分别使用Vue.set 和 Vue.data 修改 数组</p>
+        <ul>
+            <li v-for="(item , index) in arr" >{{index}}&lt;====>{{item}}</li>
+        </ul>
+        <button onclick="add3()" >Vue.set</button>
+        <button onclick="add4()" >Vue.data</button>
+    </div>
+
+    <script>
+
+        function add1(){
+            Vue.set(app,'count',app.count+1);
+        }
+
+        
+        function add2(){
+            app.count++;
+        }
+        
+        function add3(){
+            //Vue.set(app.arr,app.arr.length,'修改了');
+            Vue.set(app.arr,2,'修改了');
+        }
+
+        function add4(){
+            console.log("执行了哦！");
+            app.arr[1] = "修改了";
+        }
+
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                count: 10,
+                arr:[
+                    "zhangzq",
+                    "licm",
+                    "zhangjy",
+                    "zhangjq"
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
