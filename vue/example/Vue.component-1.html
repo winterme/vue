@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>vue component-1</title>
+</head>
+<body>
+    <h1>vue component-1</h1>
+    <hr>
+    <div id="app" >
+        <zhangzq></zhangzq>
+        <licm></licm>
+        <licm></licm>
+        <licm></licm>
+        <licm></licm>
+    </div>
+
+    <script>
+
+        Vue.component("zhangzq",{
+            template:`
+                <h1>{{message}}<==>Vue component 的第一种实现方式，Vue.component 全局注册</h1>
+            `,
+            data:function(){
+                return {
+                    message:"你好鸭"
+                }
+            }
+        })
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好'
+            },
+            components:{
+                "licm":{
+                    template:`
+                        <h1 style="color:red;" >{{message}}<==>Vue component 的第二种实现方式，components 局部注册</h1>
+                    `,
+                    data:function(){
+                        return {
+                            message:"VUE🐂🍺"
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

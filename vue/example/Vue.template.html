@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>vue template</title>
+</head>
+<body>
+    <h1>vue template</h1>
+    <hr>
+    <div id="app" >
+        <h1>vue template有四种写法，此处介绍三种</h1>
+        <ul>
+            <li>一、直接写在选项里的模板</li>
+            <li>二、写在template标签里的模板</li>
+            <li>三、写在script标签里的模板</li>
+        </ul>
+        <h3>一、直接写在选项里的模板</h3>
+        <p>{{message}}</p>
+        <div id="muban" ></div>
+
+        <hr>
+        <h3>二、写在template标签里的模板</h3>
+        <template id="temp2" >
+            <h1 style="color:red;" >temp2==>{{message}}</h1>
+            <h1 style="color:red;" >temp2==>{{message}}</h1>
+        </template>
+        
+        <hr>
+        <h3>三、写在script标签里的模板</h3>
+        <script type="x-template" id="temp3" >
+            
+                <ul class="buttons">
+          
+                        <li>
+                            <a class="" href="/" title="博客首页">
+                                <i class="iconfont icon-home"></i>
+                                <span>{{message}}</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a class="" href="/archives/" title="文章归档">
+                                <i class="iconfont icon-archive"></i>
+                                <span>{{color}}</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a class="" href="/about" title="关于博主">
+                                <i class="iconfont icon-user"></i>
+                                <span>关于博主</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a class="" href="/links" title="友情链接">
+                                <i class="iconfont icon-link"></i>
+                                <span>友情链接</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a class="" href="/page/qun" title="各地微群">
+                                <i class="iconfont icon-user"></i>
+                                <span>各地微群</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+        </script>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好'
+            }
+        })
+
+        // 一、直接写在选项里的模板
+        var muban = new Vue({
+            el:'#muban',
+            template:`
+                <h1 style="color:red;" >VUE TEMPLATE模板代码演示</h1>
+            `
+        })
+
+        // 二、写在template标签里的模板
+        var temp2 = new Vue({
+            el:'#temp2',
+            data:{
+                message:'你好'
+            },
+            template:'#temp2'
+        })
+
+        // 三、写在script标签里的模板
+        var temp3 = new Vue({
+            el:'#temp3',
+            data:{
+                message:'你好',
+                color:"#0f0"
+            },
+            template:'#temp3'
+        })
+
+    </script>
+</body>
+</html>

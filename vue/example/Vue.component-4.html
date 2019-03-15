@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>vue component-4</title>
+</head>
+<body>
+    <h1>vue component-4 component标签</h1>
+    
+    <hr>
+    <div id="app" >
+        <component is="componentA" ></component>
+        <component is="componentB" ></component>
+        <component is="componentC" ></component>
+        <component :is="who"></component>
+        <button @click="changeCom" >changeCom</button>
+    </div>
+
+    <script>
+        var componentAIS = {
+            template:`
+                <div style="color:red;" >ComponentA</div>
+            `
+        }
+        var componentBIS = {
+            template:`
+                <div style="color:blue;" >ComponentB</div>
+            `
+        }
+        var componentCIS = {
+            template:`
+                <div style="color:yellow;" >ComponentC</div>
+            `
+        }
+        
+        var app = new Vue({
+            el:'#app',
+            data:{
+                who:"componentA",
+                count:0
+            },
+            methods:{
+                changeCom:function(){
+                    this.count++
+                    var flag = this.count%3;
+                    if( flag==0 ){
+                        this.who = "componentA"
+                    }else if(flag==1){
+                        this.who = "componentB"
+                    }else{
+                        this.who = "componentC"
+                    }
+                }
+            },
+            components:{
+                "componentA":componentAIS,
+                "componentB":componentBIS,
+                "componentC":componentCIS
+            }
+        })
+    </script>
+</body>
+</html>
