@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>propsData</title>
+</head>
+<body>
+    <h1>propsData 用于扩展自定义标签的时候构造器传值</h1>
+    <hr>
+    <zhangzq></zhangzq>
+
+    <script>
+        // 实例化对象
+        var zhangzq = Vue.extend({
+            template:`
+                <p>{{message}}<==>{{info}}</p>
+            `,
+            data: function(){
+                return {
+                    message:"张子强"
+                }
+            },
+            // 属性
+            props:['info']
+        })
+
+        // 挂载
+        new zhangzq({
+            propsData:{
+                info:"你好哦"
+            }
+        }).$mount("zhangzq");
+
+    </script>
+</body>
+</html>

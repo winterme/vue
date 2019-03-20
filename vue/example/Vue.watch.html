@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>vue watch</title>
+</head>
+<body>
+    <h1>vue watch</h1>
+    <hr>
+    <div id="app" >
+        <h3>watch 有两种写法，一是直接写的 app 里面的，二是 app.$watch(obj,function(){})</h3>
+        <p>温度：{{wendu}}°</p>
+        <p>穿衣建议：{{chuanyi}}</p>
+        <p><button @click="add" >add</button>&nbsp;<button @click="jian" >jian</button></p>
+    </div>
+
+    <script>
+
+        var chuanyiArr = ["羽绒服","夹克","短袖"];
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                wendu:10,
+                chuanyi:chuanyiArr[1]
+            },
+            methods:{
+                add:function(){
+                    this.wendu++;
+                },
+                jian:function(){
+                    this.wendu--;
+                }
+            },
+            watch:{
+                // wendu:function(newVla , oldVla){
+                //     if( newVla>26 ){
+                //         this.chuanyi = chuanyiArr[2]
+                //     }else if( newVla>10 && newVla<=26 ){
+                //         this.chuanyi = chuanyiArr[1]
+                //     }else{
+                //         this.chuanyi = chuanyiArr[0]
+                //     }
+                // }
+            }
+        })
+
+        app.$watch("wendu",function(newVla , oldVla){
+            if( newVla>26 ){
+                this.chuanyi = chuanyiArr[2]
+            }else if( newVla>=10 && newVla<=26 ){
+                this.chuanyi = chuanyiArr[1]
+            }else{
+                this.chuanyi = chuanyiArr[0]
+            }
+        })
+
+    </script>
+</body>
+</html>

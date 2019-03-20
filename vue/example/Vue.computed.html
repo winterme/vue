@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>Vue computed 格式化数据</title>
+</head>
+<body>
+    <h1>Vue computed 格式化数据</h1>
+    <hr>
+    <div id="app" >
+        <p>价格是：{{price}}</p>
+        <p><button @click="add" >add</button></p>
+        <p>format后的价钱是：{{priceFormat}}</p>
+        <hr>
+        <p>数据排序</p>
+        <ul>
+            <li v-for="(item ,index) in dataSort" >{{item.title}}  --  {{item.time}}</li>
+        </ul>
+    </div>
+
+    <script>
+        // compured , methods , 都是选项
+        var app = new Vue({
+            el:'#app',
+            data:{
+                price:0,
+                data:[
+                    {title:"震惊....",time:"2018/12/12"},
+                    {title:"竟然是这样....",time:"2019/02/12"},
+                    {title:"男默女泪....",time:"2018/03/12"},
+                    {title:"不可思议....",time:"2018/03/05"},
+                    {title:"居然会有这样的事情....",time:"2018/03/03"},
+                ]
+            },
+            computed:{
+                priceFormat:function(){
+                    return "$"+this.price+"元";
+                },
+                dataSort:function(){
+                    return this.data.sort(function(a,b){
+                        return new Date(a.time) - new Date(b.time);
+                    });
+                }
+            },
+            methods:{
+                add:function(){
+                    this.price++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
