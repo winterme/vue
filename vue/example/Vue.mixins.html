@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js" ></script>
+    <title>vue mixins 混入</title>
+</head>
+<body>
+    <h1>vue hello word</h1>
+    <h3>
+        和 Watch 一样，也有两种写法，一种 局部，一种全局，全局的比局部的先执行，自带生命周期的最后执行
+    </h3>
+    <hr>
+    <div id="app" >
+        <p>{{num}}</p>
+        <p><button @click="add" >add</button></p>
+    </div>
+
+    <script>
+        
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            },
+            mixins:[
+                {
+                    updated:function(){
+                        console.log("我是局部updated，数据变化了，变成了=>"+this.num)
+                    }
+                }
+            ]
+            ,
+            updated:function(){
+                console.log("我是自带的生命周期的 updated");
+            }
+        })
+    </script>
+</body>
+</html>
