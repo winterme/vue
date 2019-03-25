@@ -19,7 +19,12 @@
     </div>
 
     <script>
-        
+        Vue.mixin({
+            updated:function(){
+                console.log("全局被混入")
+            }
+        })
+
         var app = new Vue({
             el:'#app',
             data:{
@@ -30,6 +35,7 @@
                     this.num++;
                 }
             },
+            // 局部 mixins
             mixins:[
                 {
                     updated:function(){
@@ -38,6 +44,7 @@
                 }
             ]
             ,
+            // vue生命周期自带
             updated:function(){
                 console.log("我是自带的生命周期的 updated");
             }
